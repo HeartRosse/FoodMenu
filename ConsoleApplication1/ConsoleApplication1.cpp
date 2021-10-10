@@ -1,78 +1,109 @@
 #include <iostream>
 #include <string>
+#include "Product.h"
 using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    string choice;
+    static bool Exit = true;
     int sum,count;
-    cout << "Добро пожаловать" << endl;
-    choice = "0";
+    cout << "Добро пожаловать" << "\n\n";
+    int choice;
     sum = 0;
     count = 0;
-    cout << "Выберите один из пунктов: \n1.Пицца \n2.Гамбургер \n3.Картошка - Фри \n4.Пончик \n5.Шаурма\n6.Кока - Кола\n7.Пепси\n8.Наггетсы\n9.Чизбургер\n0.Выход" << endl;
-    for (int loop = 0; ; loop++)
-    {
-        cout << "\n";
-        getline(cin, choice);
-        if (choice == "1") {
+    cout << "В наличии:\n";
+    print_product_price();
+    cout << "\n\n";
+    cout << "Чтобы купить что-нибудь, нажмите на соответствующую кнопку: \n1.Пицца \n2.Гамбургер \n3.Картошка-Фри \n4.Пончик \n5.Шаурма\n6.Кока-Кола\n7.Пепси\n8.Наггетсы\n9.Чизбургер\n10.Показать меню\n11.Узнать счёт\n0.Выход" << "\n";
+    
+    while (Exit) {
+        cout<<"\n";
+        cin >> choice;
+        cin.ignore(32767, '\n');
+        switch (choice)
+        {
+        case 1:
             cout << "\n";
             cout << "Вы выбрали пиццу\n";
             sum += 85;
+            cout << "Ваш текущий счет: " <<sum;
             count++;
-        }
-        if (choice == "2") {
+            break;
+        case 2:
             cout << "\n";
             cout << "Вы выбрали гамбургер\n";
             sum += 50;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "3") {
+            break;
+        case 3:
             cout << "\n";
             cout << "Вы выбрали картошку-фру\n";
             sum += 65;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "4") {
+            break;
+        case 4:
             cout << "\n";
             cout << "Вы выбрали пончик\n";
             sum += 40;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "5") {
+            break;
+        case 5:
             cout << "\n";
             cout << "Вы выбрали шаурму\n";
             sum += 75;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "6") {
+            break;
+        case 6:
             cout << "\n";
             cout << "Вы выбрали кока-колу\n";
             sum += 55;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "7") {
+            break;
+        case 7:
             cout << "\n";
             cout << "Вы выбрали пепси\n";
             sum += 55;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "8") {
+            break;
+        case 8:
             cout << "\n";
             cout << "Вы выбрали наггетсы\n";
             sum += 60;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "9") {
+            break;
+        case 9:
             cout << "\n";
             cout << "Вы выбрали чизбургер\n";
             sum += 55;
+            cout << "Ваш текущий счет: " << sum;
             count++;
-        }
-        if (choice == "0") {
+            break;
+        case 10:
+            system("CLS");
+            cout << "Чтобы купить что-нибудь, нажмите на соответствующую кнопку: \n1.Пицца \n2.Гамбургер \n3.Картошка-Фри \n4.Пончик \n5.Шаурма\n6.Кока-Кола\n7.Пепси\n8.Наггетсы\n9.Чизбургер\n10.Показать меню\n11.Узнать счёт\n0.Выход" << "\n";
+            break;
+        case 11:
+            system("CLS");
+            cout << "Ваш текущий счет: " << sum << " рублей." << " Для того чтобы выйти в главное меню нажмите 10" << endl;
+            break;
+        case 0:
+            Exit = false;
+            break;
+        
+            
+        default:
+            cout<<"Простите, но у нас такого блюда нету";
             break;
         }
     }
+    system("CLS");
     cout << "Ваша финальная цена: " << sum<< " рублей." << endl;
     cout << "Вы взяли: " << count << " блюд(а)."<<endl;
     return 0;
